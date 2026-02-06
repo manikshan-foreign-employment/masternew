@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Master Sub | Enterprise ERP v16.0 Ultimate</title>
+    <title>Master Sub | Enterprise ERP v17.0 Ultimate</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -164,12 +164,10 @@
     <div id="login-scr" style="position:fixed; inset:0; background:#0f172a; display:flex; align-items:center; justify-content:center; z-index:9999; background-image: radial-gradient(#1e293b 1px, transparent 1px); background-size: 30px 30px;">
         <div class="card" style="width:100%; max-width:420px; padding:50px 40px; border:none; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
             <div style="text-align:center; margin-bottom:40px;">
-                <!-- Logo with Fallback -->
                 <div style="display:flex; justify-content:center; margin-bottom:20px;">
                     <img src="Logo.png" class="logo-img" style="height:60px;" onerror="this.style.display='none'; document.getElementById('login-logo-fallback').style.display='block'">
                     <div id="login-logo-fallback" style="display:none; font-size:3rem; color:var(--primary);"><i class="fas fa-layer-group"></i></div>
                 </div>
-                <!-- Changed Title as Requested -->
                 <h2 style="font-weight:800; color:var(--text-main); letter-spacing:-0.5px; font-size:2rem;">Welcome</h2>
             </div>
             
@@ -188,8 +186,7 @@
                 </div>
             </div>
             <button class="btn btn-primary w-full" onclick="app.login()" style="height:50px; font-size:1rem;">Secure Login <i class="fas fa-arrow-right"></i></button>
-            <p style="text-align:center; margin-top:20px; font-size:0.8rem; color:#94a3b8;">v16.0 Ultimate | Licensed System</p>
-            <!-- Removed Default Credentials Text as Requested -->
+            <p style="text-align:center; margin-top:20px; font-size:0.8rem; color:#94a3b8;">v17.0 Ultimate | Licensed System</p>
         </div>
     </div>
 
@@ -210,10 +207,7 @@
                 <a onclick="app.nav('sales')" id="n-sales" class="nav-link"><i class="fas fa-cash-register" style="width:20px;"></i> POS & Sales</a>
                 <a onclick="app.nav('damage')" id="n-damage" class="nav-link"><i class="fas fa-exclamation-triangle" style="width:20px;"></i> Damage Log</a>
                 <a onclick="app.nav('reports')" id="n-reports" class="nav-link"><i class="fas fa-chart-bar" style="width:20px;"></i> Reports</a>
-                
-                <!-- Settings (Hidden for Staff) -->
                 <a onclick="app.nav('settings')" id="n-settings" class="nav-link settings-link"><i class="fas fa-cog" style="width:20px;"></i> Settings</a>
-                
                 <div style="margin-top:auto; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1);">
                     <a onclick="location.reload()" class="nav-link" style="color:#ef4444;"><i class="fas fa-sign-out-alt" style="width:20px;"></i> Logout</a>
                 </div>
@@ -233,7 +227,6 @@
             </header>
 
             <div class="content-body">
-                
                 <!-- Dashboard -->
                 <div id="v-dash">
                     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap:25px;">
@@ -333,20 +326,15 @@
 
                 <!-- Settings -->
                 <div id="v-settings" style="display:none;">
-                    
-                    <!-- Professional Lock Screen -->
                     <div id="settings-lock" class="lock-wrapper">
                         <div class="lock-icon-bg"><i class="fas fa-lock"></i></div>
                         <h2 style="font-weight:800; margin-bottom:10px;">Security Checkpoint</h2>
                         <p style="color:var(--text-muted); margin-bottom:30px;">This area is restricted to Administrators. Please enter your PIN to continue.</p>
-                        
                         <input type="password" id="settings-pin" class="form-control" style="font-size:1.5rem; letter-spacing:15px; text-align:center; max-width:250px; margin:0 auto 25px; height:60px;" maxlength="8" placeholder="••••">
-                        
                         <button class="btn btn-primary w-full" style="max-width:250px; height:50px;" onclick="app.unlockSettings()">Unlock Settings</button>
                     </div>
 
                     <div id="settings-content" style="display:none;">
-                        <!-- Settings Tabs -->
                         <div style="display:flex; gap:10px; overflow-x:auto; margin-bottom:25px; border-bottom:1px solid var(--border); padding-bottom:15px;">
                             <button class="btn btn-ghost btn-sm" id="tab-master" onclick="app.switchSetTab('master')"><i class="fas fa-database"></i> Master Data</button>
                             <button class="btn btn-ghost btn-sm" id="tab-profit" onclick="app.switchSetTab('profit')"><i class="fas fa-chart-pie"></i> Profit Analysis</button>
@@ -380,37 +368,26 @@
                             <div class="table-container"><table><thead><tr><th>Date</th><th>Item</th><th>Qty</th><th>Unit Cost</th><th>Unit Price</th><th>Net Profit</th></tr></thead><tbody id="t-exec-profit"></tbody></table></div>
                         </div>
 
-                        <!-- 3. Security (3 Distinct Sections) -->
+                        <!-- 3. Security -->
                         <div id="set-security" style="display:none;">
                             <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:25px;">
-                                
-                                <!-- 1. Master Admin Login Password -->
                                 <div class="card" style="border-top: 4px solid var(--primary);">
                                     <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-user-shield"></i> Master Admin Password</h4>
-                                    <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:20px;">Update the main login password for the <strong>'admin'</strong> account.</p>
                                     <div style="margin-bottom:15px;"><label>New Admin Password</label><input type="password" id="new-admin-pass" class="form-control" placeholder="New Password"></div>
                                     <button class="btn btn-primary w-full" onclick="app.changeLoginPass('admin')">Update Admin Password</button>
                                 </div>
-
-                                <!-- 2. Staff Login Password -->
                                 <div class="card" style="border-top: 4px solid var(--success);">
                                     <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-users"></i> Staff Access Password</h4>
-                                    <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:20px;">Update the login password for the <strong>'staff'</strong> account.</p>
                                     <div style="margin-bottom:15px;"><label>New Staff Password</label><input type="password" id="new-staff-pass" class="form-control" placeholder="New Password"></div>
                                     <button class="btn btn-success w-full" onclick="app.changeLoginPass('staff')">Update Staff Password</button>
                                 </div>
-
-                                <!-- 3. Settings PIN -->
                                 <div class="card" style="border-top: 4px solid #8b5cf6;">
                                     <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-key"></i> Settings Lock PIN</h4>
-                                    <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:20px;">Change the 4-digit PIN used to unlock this Settings panel.</p>
                                     <div style="margin-bottom:15px;"><label>New Lock PIN</label><input type="password" id="new-pin" class="form-control" placeholder="Numbers Only (e.g. 1234)"></div>
                                     <button class="btn btn-ghost w-full" onclick="app.changePin()">Update Lock PIN</button>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -418,7 +395,6 @@
     </div>
 
     <!-- Modals -->
-    <!-- Inventory Modal -->
     <div class="overlay" id="m-inv">
         <div class="modal">
             <div class="modal-head"><span class="modal-title" id="m-inv-title" style="font-weight:700; font-size:1.1rem;">Stock Entry</span> <i class="fas fa-times" onclick="app.closeModal()" style="cursor:pointer; font-size:1.2rem;"></i></div>
@@ -442,7 +418,6 @@
         </div>
     </div>
 
-    <!-- Sales Modal -->
     <div class="overlay" id="m-sale">
         <div class="modal">
             <div class="modal-head"><span class="modal-title" style="font-weight:700; font-size:1.1rem;">New Transaction</span> <i class="fas fa-times" onclick="app.closeModal()" style="cursor:pointer; font-size:1.2rem;"></i></div>
@@ -474,15 +449,15 @@
         </div>
     </div>
 
-    <!-- Invoice Modal -->
+    <!-- Invoice Modal Updated -->
     <div class="overlay" id="m-invoice-setup">
         <div class="modal">
-            <div class="modal-head"><span class="modal-title" style="font-weight:700;">Generate Invoice</span> <i class="fas fa-times" onclick="app.closeModal()" style="cursor:pointer;"></i></div>
+            <div class="modal-head"><span class="modal-title" style="font-weight:700;">Generate Professional Invoice</span> <i class="fas fa-times" onclick="app.closeModal()" style="cursor:pointer;"></i></div>
             <div class="modal-body">
-                <div style="margin-bottom:15px;"><label>Client Name</label><input type="text" id="b-name" class="form-control" placeholder="Customer Name"></div>
-                <div style="margin-bottom:15px;"><label>Contact Number</label><input type="text" id="b-tel" class="form-control" placeholder="07x xxx xxxx"></div>
-                <div style="margin-bottom:25px;"><label>Billing Address</label><input type="text" id="b-addr" class="form-control" placeholder="City / Address"></div>
-                <button class="btn btn-primary w-full" onclick="app.downloadInvoice()">Download PDF</button>
+                <div style="margin-bottom:15px;"><label>Company Contact Number</label><input type="text" id="b-contact" class="form-control" placeholder="Contact Number"></div>
+                <div style="margin-bottom:15px;"><label>Address</label><input type="text" id="b-address" class="form-control" placeholder="Billing Address"></div>
+                <div style="margin-bottom:25px;"><label>Email</label><input type="text" id="b-email" class="form-control" placeholder="Email Address"></div>
+                <button class="btn btn-primary w-full" onclick="app.downloadInvoice()">Download PDF Invoice</button>
             </div>
         </div>
     </div>
@@ -506,38 +481,20 @@
         window.app = {
             inventory: [], sales: [], userRole: null,
 
-            // --- AUTH & LOGIN SYSTEM ---
             login: () => {
                 const u = document.getElementById('l-user').value.toLowerCase().trim();
                 const p = document.getElementById('l-pass').value;
-                
-                // Retrieve stored passwords (or defaults)
                 const adminPass = localStorage.getItem('ms_admin_pass') || 'admin';
                 let staffPass = localStorage.getItem('ms_staff_pass');
-
-                // AUTO-FIX: If legacy data (admin) exists for staff, migrate it or ensure new default works if cleared
-                // If staffPass is null, default is 'staff'. 
                 if (!staffPass) staffPass = 'staff';
 
                 if(u === 'admin' && p === adminPass) {
-                    app.userRole = 'admin';
-                    app.enterApp("Administrator");
-                } 
-                else if (u === 'staff' && (p === staffPass || (staffPass === 'admin' && p === 'staff'))) {
-                    // Allow login if pass matches stored OR if stored is 'admin' (legacy) but user typed 'staff' (new default)
-                    // Auto-correct legacy password to new default for future
-                    if(staffPass === 'admin' && p === 'staff') {
-                        localStorage.setItem('ms_staff_pass', 'staff');
-                    }
-                    
-                    app.userRole = 'staff';
-                    app.enterApp("Staff Member");
-                    // Hide settings for staff
+                    app.userRole = 'admin'; app.enterApp("Administrator");
+                } else if (u === 'staff' && (p === staffPass || (staffPass === 'admin' && p === 'staff'))) {
+                    if(staffPass === 'admin' && p === 'staff') localStorage.setItem('ms_staff_pass', 'staff');
+                    app.userRole = 'staff'; app.enterApp("Staff Member");
                     document.getElementById('n-settings').style.display = 'none';
-                } 
-                else {
-                    app.toast("Invalid Username or Password");
-                }
+                } else { app.toast("Invalid Credentials"); }
             },
 
             enterApp: (roleName) => {
@@ -546,23 +503,18 @@
                 document.getElementById('u-display').innerText = roleName;
                 document.getElementById('live-date').innerText = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
                 
-                // NEW: Access Control
                 if(app.userRole === 'staff') {
-                    // Hide Add buttons
                     document.getElementById('btn-add-stock').style.display = 'none';
                     document.getElementById('btn-new-sale').style.display = 'none';
                 } else {
                     document.getElementById('btn-add-stock').style.display = 'inline-flex';
                     document.getElementById('btn-new-sale').style.display = 'inline-flex';
                 }
-
                 app.init();
             },
 
             init: () => {
-                // Initialize default Settings PIN if not exists
                 if(!localStorage.getItem('ms_pin')) localStorage.setItem('ms_pin', '1234');
-                
                 onSnapshot(collection(db, "inventory"), s => {
                     app.inventory = s.docs.map(d => ({id: d.id, ...d.data()}));
                     app.renderInv(); app.renderDamage(); app.updateStats(); app.updateDatalist();
@@ -575,17 +527,15 @@
                 });
             },
 
-            // --- UI & NAV ---
             toggleSidebar: () => {
                 document.getElementById('sidebar').classList.toggle('active');
                 document.querySelector('.mobile-overlay').classList.toggle('active');
             },
 
             nav: (v) => {
-                app.toggleSidebar(); // Auto-close on mobile
+                app.toggleSidebar();
                 ['dash','inv','sales','damage','reports','settings'].forEach(view => document.getElementById('v-'+view).style.display='none');
                 document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                
                 document.getElementById('n-'+v).classList.add('active');
                 document.getElementById('p-title').innerText = v === 'settings' ? 'Admin Control' : v.toUpperCase();
                 
@@ -595,40 +545,28 @@
                     document.getElementById('settings-lock').style.display='block';
                     document.getElementById('settings-content').style.display='none';
                     document.getElementById('settings-pin').value = '';
-                } else {
-                    document.getElementById('v-'+v).style.display='block';
-                }
+                } else { document.getElementById('v-'+v).style.display='block'; }
             },
 
-            // --- SECURITY SETTINGS ---
             unlockSettings: () => {
                 const pin = document.getElementById('settings-pin').value;
-                const storedPin = localStorage.getItem('ms_pin');
-                if(pin === storedPin) {
+                if(pin === localStorage.getItem('ms_pin')) {
                     document.getElementById('settings-lock').style.display='none';
                     document.getElementById('settings-content').style.display='block';
                     app.switchSetTab('master');
                 } else { app.toast("Incorrect Security PIN"); }
             },
 
-            // 1. Change PIN (Settings Lock)
             changePin: () => {
                 const pin = document.getElementById('new-pin').value;
-                if(pin.length >= 4) {
-                    localStorage.setItem('ms_pin', pin);
-                    app.toast("Settings Lock PIN Updated!");
-                    document.getElementById('new-pin').value = '';
-                } else { app.toast("PIN must be 4+ digits"); }
+                if(pin.length >= 4) { localStorage.setItem('ms_pin', pin); app.toast("PIN Updated!"); document.getElementById('new-pin').value = ''; } 
+                else { app.toast("PIN too short"); }
             },
 
-            // 2 & 3. Change Login Passwords
             changeLoginPass: (userType) => {
                 const newPass = document.getElementById(`new-${userType}-pass`).value;
-                if(newPass.length >= 4) {
-                    localStorage.setItem(`ms_${userType}_pass`, newPass);
-                    app.toast(`${userType.charAt(0).toUpperCase() + userType.slice(1)} Password Updated!`);
-                    document.getElementById(`new-${userType}-pass`).value = '';
-                } else { app.toast("Password must be 4+ characters"); }
+                if(newPass.length >= 4) { localStorage.setItem(`ms_${userType}_pass`, newPass); app.toast("Password Updated!"); document.getElementById(`new-${userType}-pass`).value = ''; }
+                else { app.toast("Password too short"); }
             },
 
             switchSetTab: (t) => {
@@ -640,7 +578,6 @@
                 });
             },
 
-            // --- CORE FUNCTIONALITY ---
             updateStats: () => {
                 const c = (b, s) => app.inventory.filter(i=>i.branch===b && i.status===s).reduce((a,v)=>a+parseFloat(v.qty||0),0);
                 document.getElementById('s-col-act').innerText = c('Colombo', 'Active');
@@ -648,63 +585,37 @@
                 document.getElementById('s-tot-dmg').innerText = app.inventory.filter(i=>i.status==='Damage').reduce((a,v)=>a+parseFloat(v.qty||0),0);
             },
 
-            // Render Inventory (Staff View)
             renderInv: () => {
                 const tb = document.getElementById('t-inv'); tb.innerHTML = '';
                 const q = document.getElementById('inv-q').value.toLowerCase();
                 const d = document.getElementById('inv-date-f').value;
                 const b = document.getElementById('inv-branch-f').value;
-                
                 app.inventory.filter(i=>i.status==='Active').forEach(i => {
                     if(i.name.toLowerCase().includes(q) && (b==='All'||i.branch===b) && (!d||i.dateAdded===d)) {
-                        
-                        // NEW: Hide Action for Staff
                         const actionHtml = app.userRole === 'admin' 
                             ? `<button class="btn btn-ghost btn-sm" onclick="app.editInv('${i.id}')"><i class="fas fa-edit"></i></button>` 
                             : `<span style="color:#cbd5e1; font-size:0.8rem;">-</span>`;
-
-                        tb.innerHTML += `<tr>
-                            <td>${i.dateAdded}</td>
-                            <td><span class="badge ${i.branch==='Colombo'?'badge-colombo':'badge-negombo'}">${i.branch}</span></td>
-                            <td><strong>${i.name}</strong></td>
-                            <td>${i.qty}</td>
-                            <td>${parseFloat(i.sellPrice).toLocaleString()}</td>
-                            <td style="text-align:right;">${actionHtml}</td>
-                        </tr>`;
+                        tb.innerHTML += `<tr><td>${i.dateAdded}</td><td><span class="badge ${i.branch==='Colombo'?'badge-colombo':'badge-negombo'}">${i.branch}</span></td><td><strong>${i.name}</strong></td><td>${i.qty}</td><td>${parseFloat(i.sellPrice).toLocaleString()}</td><td style="text-align:right;">${actionHtml}</td></tr>`;
                     }
                 });
             },
 
-            // Render Sales
             renderSales: () => {
                 const tb = document.getElementById('t-sales'); tb.innerHTML = '';
                 const q = document.getElementById('sale-q').value.toLowerCase();
                 const d = document.getElementById('sale-date-f').value;
                 const b = document.getElementById('sale-branch-f').value;
-
                 app.sales.sort((x,y)=>new Date(y.date)-new Date(x.date)).forEach(s => {
-                    const saleBranch = s.item.includes('Colombo') ? 'Colombo' : 'Negombo';
-                    if(s.item.toLowerCase().includes(q) && (b==='All'||saleBranch===b) && (!d||s.date===d)) {
-                        
-                        // NEW: Hide Delete Action for Staff
+                    const sb = s.item.includes('Colombo') ? 'Colombo' : 'Negombo';
+                    if(s.item.toLowerCase().includes(q) && (b==='All'||sb===b) && (!d||s.date===d)) {
                         const actionHtml = app.userRole === 'admin'
                             ? `<i class="fas fa-trash-alt" style="color:var(--danger); cursor:pointer; opacity:0.7;" onclick="app.delSale('${s.id}')"></i>`
                             : `<span style="color:#cbd5e1; font-size:0.8rem;">-</span>`;
-
-                        tb.innerHTML += `<tr>
-                            <td><input type="checkbox" class="sale-sel" data-id="${s.id}"></td>
-                            <td>${s.date}</td>
-                            <td>${s.item}</td>
-                            <td>${s.qty}</td>
-                            <td><span class="badge badge-colombo">${s.mode}</span></td>
-                            <td style="font-weight:700;">${parseFloat(s.amount).toLocaleString()}</td>
-                            <td style="text-align:right;">${actionHtml}</td>
-                        </tr>`;
+                        tb.innerHTML += `<tr><td><input type="checkbox" class="sale-sel" data-id="${s.id}"></td><td>${s.date}</td><td>${s.item}</td><td>${s.qty}</td><td><span class="badge badge-colombo">${s.mode}</span></td><td style="font-weight:700;">${parseFloat(s.amount).toLocaleString()}</td><td style="text-align:right;">${actionHtml}</td></tr>`;
                     }
                 });
             },
 
-            // Render Damage Log
             renderDamage: () => {
                 const tb = document.getElementById('t-damage'); tb.innerHTML = '';
                 const d = document.getElementById('dmg-date-f').value;
@@ -716,65 +627,46 @@
                 });
             },
 
-            // Render Master Inventory (Admin Only)
             renderExecInv: () => {
                 const tb = document.getElementById('t-exec-inv'); tb.innerHTML = '';
                 const q = document.getElementById('ex-inv-q').value.toLowerCase();
                 const d = document.getElementById('ex-inv-date-f').value;
                 const b = document.getElementById('ex-inv-branch-f').value;
-
                 app.inventory.forEach(i => {
                     if(i.name.toLowerCase().includes(q) && (b==='All'||i.branch===b) && (!d||i.dateAdded===d)) {
                         const m = (parseFloat(i.sellPrice)||0) - (parseFloat(i.costPrice)||0);
-                        tb.innerHTML += `<tr>
-                            <td><strong>${i.name}</strong><br><small style="color:var(--text-muted);">${i.branch} | ${i.status}</small></td>
-                            <td><input type="number" class="form-control btn-sm" style="width:70px;" value="${i.qty}" onchange="app.upExec('${i.id}','qty',this.value)"></td>
-                            <td><input type="number" class="form-control btn-sm" style="width:90px;" value="${i.costPrice||0}" onchange="app.upExec('${i.id}','costPrice',this.value)"></td>
-                            <td>${i.sellPrice}</td>
-                            <td style="font-weight:700; color:${m>=0?'var(--success)':'var(--danger)'}">${m.toLocaleString()}</td>
-                            <td style="text-align:right;"><i class="fas fa-trash" style="color:var(--danger); cursor:pointer;" onclick="app.delInv('${i.id}')"></i></td>
-                        </tr>`;
+                        tb.innerHTML += `<tr><td><strong>${i.name}</strong><br><small style="color:var(--text-muted);">${i.branch} | ${i.status}</small></td><td><input type="number" class="form-control btn-sm" style="width:70px;" value="${i.qty}" onchange="app.upExec('${i.id}','qty',this.value)"></td><td><input type="number" class="form-control btn-sm" style="width:90px;" value="${i.costPrice||0}" onchange="app.upExec('${i.id}','costPrice',this.value)"></td><td>${i.sellPrice}</td><td style="font-weight:700; color:${m>=0?'var(--success)':'var(--danger)'}">${m.toLocaleString()}</td><td style="text-align:right;"><i class="fas fa-trash" style="color:var(--danger); cursor:pointer;" onclick="app.delInv('${i.id}')"></i></td></tr>`;
                     }
                 });
             },
 
-            // Render Profit (Admin Only)
             renderExecProfit: () => {
                 const tb = document.getElementById('t-exec-profit'); tb.innerHTML = '';
                 let colP = 0, negP = 0;
-                
                 app.sales.forEach(s => {
                     const inv = app.inventory.find(i=>`${i.name} (${i.branch})` === s.item);
                     const cost = inv ? parseFloat(inv.costPrice)||0 : 0;
                     const prof = parseFloat(s.amount) - (cost * parseFloat(s.qty));
-                    
                     if(s.item.includes('Colombo')) colP += prof; else negP += prof;
-                    
                     tb.innerHTML += `<tr><td>${s.date}</td><td>${s.item}</td><td>${s.qty}</td><td>${cost}</td><td>${(parseFloat(s.amount)/s.qty).toFixed(2)}</td><td style="font-weight:700; color:${prof>=0?'var(--success)':'var(--danger)'}">${prof.toLocaleString()}</td></tr>`;
                 });
-                
                 document.getElementById('ep-col').innerText = colP.toLocaleString();
                 document.getElementById('ep-neg').innerText = negP.toLocaleString();
                 document.getElementById('ep-tot').innerText = (colP + negP).toLocaleString();
             },
 
-            // --- DATABASE ACTIONS ---
             upExec: async (id, f, v) => { const u={}; u[f] = parseFloat(v) || 0; await updateDoc(doc(db,"inventory",id), u); },
             toggleCheque: (v) => { document.getElementById('cheque-wrap').style.display = (v==='Cheque') ? 'block' : 'none'; },
 
-            // PDF Generators
             genPDF: (type) => {
                 const { jsPDF } = window.jspdf; const doc = new jsPDF();
                 const b = document.getElementById('rep-branch').value;
                 app.pdfHead(doc, `${type.toUpperCase()} SALES - ${b}`);
-                
                 let f = app.sales; const now = new Date();
                 if(type==='daily') f = f.filter(s=>s.date === now.toISOString().split('T')[0]);
                 if(type==='weekly') { const lw = new Date(); lw.setDate(now.getDate()-7); f = f.filter(s=>new Date(s.date) >= lw); }
                 if(type==='monthly') f = f.filter(s=>s.date.startsWith(now.toISOString().slice(0,7)));
-                
                 if(b!=='All') f = f.filter(s=>s.item.includes(b));
-                
                 const r = f.map(s=>[s.date, s.item, s.qty, s.mode, parseFloat(s.amount).toLocaleString()]);
                 doc.autoTable({ startY: 45, head:[['Date','Item','Qty','Mode','Amount (LKR)']], body:r, headStyles:{fillColor:[37, 99, 235]} });
                 doc.save(`Sales_${type}_${b}.pdf`);
@@ -789,37 +681,85 @@
                 doc.autoTable({ startY: 45, head:[['Date','Item','Branch','Qty']], body:r, headStyles:{fillColor:[220,38,38]} });
                 doc.save(`Damage_Report_${b}.pdf`);
             },
-            downloadInvoice: () => {
+            
+            // --- PROFESSIONAL INVOICE LOGIC ---
+            downloadInvoice: async () => {
                 const { jsPDF } = window.jspdf; const doc = new jsPDF();
-                const n = document.getElementById('b-name').value || "Valued Customer";
-                app.pdfHead(doc, "TAX INVOICE");
+                const primaryColor = [37, 99, 235];
                 
-                doc.setFontSize(10); 
-                doc.text(`Client: ${n}`, 14, 45);
-                doc.text(`Tel: ${document.getElementById('b-tel').value}`, 14, 50);
-                doc.text(`Addr: ${document.getElementById('b-addr').value}`, 14, 55);
+                // 1. Logo Handling
+                const imgEl = document.querySelector('.logo-img');
+                let logoDataUrl = null;
+                try {
+                    if(imgEl && imgEl.complete && imgEl.naturalHeight !== 0) {
+                        const canvas = document.createElement("canvas");
+                        canvas.width = imgEl.naturalWidth; canvas.height = imgEl.naturalHeight;
+                        const ctx = canvas.getContext("2d"); ctx.drawImage(imgEl, 0, 0);
+                        logoDataUrl = canvas.toDataURL("image/png");
+                    }
+                } catch(e) { console.warn("Logo error", e); }
 
-                const checked = Array.from(document.querySelectorAll('.sale-sel:checked')).map(c => {
+                if(logoDataUrl) {
+                    doc.addImage(logoDataUrl, 'PNG', 14, 10, 30, 30 * (imgEl.naturalHeight/imgEl.naturalWidth)); 
+                }
+                
+                // 2. Header
+                doc.setFontSize(20); doc.setTextColor(...primaryColor); doc.setFont("helvetica", "bold");
+                doc.text("MASTER SUB", 200, 20, {align: 'right'});
+                doc.setFontSize(10); doc.setTextColor(100); doc.setFont("helvetica", "normal");
+                doc.text("Enterprise Resource Planning", 200, 25, {align: 'right'});
+                doc.text("Colombo, Sri Lanka", 200, 30, {align: 'right'});
+                
+                doc.setDrawColor(...primaryColor); doc.setLineWidth(1); doc.line(14, 45, 200, 45);
+                doc.setFontSize(16); doc.setTextColor(0); doc.setFont("helvetica", "bold"); doc.text("INVOICE", 14, 55);
+                
+                const invNo = "INV-" + Date.now().toString().slice(-6);
+                doc.setFontSize(10); doc.setFont("helvetica", "normal"); doc.setTextColor(80);
+                doc.text(`Invoice No: ${invNo}`, 14, 62); doc.text(`Date: ${new Date().toLocaleDateString()}`, 14, 67);
+
+                // 3. Bill To Section (New Fields)
+                const contact = document.getElementById('b-contact').value || "-";
+                const address = document.getElementById('b-address').value || "-";
+                const email = document.getElementById('b-email').value || "-";
+                
+                doc.setFont("helvetica", "bold"); doc.setTextColor(0); doc.text("Bill To:", 120, 55);
+                doc.setFont("helvetica", "normal"); doc.setTextColor(80);
+                doc.text(`Contact: ${contact}`, 120, 62);
+                doc.text(`Address: ${address}`, 120, 67);
+                doc.text(`Email: ${email}`, 120, 72);
+
+                // 4. Table
+                const checked = Array.from(document.querySelectorAll('.sale-sel:checked'));
+                if(checked.length === 0) { app.toast("Select items first!"); return; }
+                const items = checked.map(c => {
                     const s = app.sales.find(x => x.id === c.dataset.id);
-                    return [s.item, s.qty, parseFloat(s.amount).toLocaleString()];
+                    return [s.date, s.item, s.qty, parseFloat(s.amount).toLocaleString(undefined, {minimumFractionDigits:2})];
                 });
-                
-                if(checked.length===0) { app.toast("Select items first!"); return; }
 
-                doc.autoTable({ startY: 65, head:[['Description','Qty','Total']], body:checked, headStyles:{fillColor:[37, 99, 235]} });
-                const tot = Array.from(document.querySelectorAll('.sale-sel:checked')).reduce((a,c)=>a+parseFloat(app.sales.find(x=>x.id===c.dataset.id).amount),0);
+                doc.autoTable({
+                    startY: 85, head: [['Date', 'Description', 'Qty', 'Amount (LKR)']], body: items,
+                    theme: 'grid', headStyles: { fillColor: primaryColor, textColor: 255, fontStyle: 'bold' },
+                    styles: { fontSize: 9, cellPadding: 4 }, columnStyles: { 3: { halign: 'right' } }
+                });
+
+                // 5. Footer
+                const total = checked.reduce((a,c)=>a+parseFloat(app.sales.find(x=>x.id===c.dataset.id).amount),0);
+                const finalY = doc.lastAutoTable.finalY + 10;
+                doc.setFontSize(12); doc.setTextColor(0); doc.setFont("helvetica", "bold");
+                doc.text(`Total Payable: LKR ${total.toLocaleString(undefined, {minimumFractionDigits:2})}`, 200, finalY, {align: 'right'});
                 
-                doc.setFontSize(12); doc.setFont(undefined, 'bold');
-                doc.text(`Total Payable: LKR ${tot.toLocaleString()}`, 196, doc.lastAutoTable.finalY + 15, {align:'right'});
-                doc.save(`Invoice_${n}.pdf`); app.closeModal();
+                doc.setFontSize(9); doc.setTextColor(150); doc.setFont("helvetica", "italic");
+                doc.text("Thank you for your business!", 105, 280, {align: 'center'});
+                
+                doc.save(`Invoice_${invNo}.pdf`); app.closeModal();
             },
+
             pdfHead: (doc, t) => {
                 doc.setFillColor(37, 99, 235); doc.rect(0, 0, 210, 35, 'F');
                 doc.setTextColor(255); doc.setFontSize(18); doc.text("MASTER SUB ENTERPRISE", 14, 18);
                 doc.setFontSize(9); doc.text(t + " | " + new Date().toLocaleString(), 14, 26);
             },
 
-            // --- GENERIC ---
             openModal: (m) => {
                 document.getElementById('m-'+m).style.display='flex';
                 if(m==='inv') {
@@ -842,24 +782,14 @@
             fillSale: (v) => { const i = app.inventory.find(x=>`${x.name} (${x.branch})`===v); if(i) { window.sPrice = i.sellPrice; document.getElementById('f-s-amt').value = i.sellPrice; }},
             calcSale: () => document.getElementById('f-s-amt').value = document.getElementById('f-s-qty').value * (window.sPrice||0),
 
-            // --- SAVING ---
             saveInv: async () => {
                 const id = document.getElementById('f-i-id').value;
-                const d = { 
-                    dateAdded: document.getElementById('f-i-date').value, 
-                    branch: document.getElementById('f-i-branch').value, 
-                    name: document.getElementById('f-i-name').value, 
-                    qty: parseFloat(document.getElementById('f-i-qty').value)||0, 
-                    status: document.getElementById('f-i-status').value, 
-                    sellPrice: parseFloat(document.getElementById('f-i-sell').value)||0 
-                };
+                const d = { dateAdded: document.getElementById('f-i-date').value, branch: document.getElementById('f-i-branch').value, name: document.getElementById('f-i-name').value, qty: parseFloat(document.getElementById('f-i-qty').value)||0, status: document.getElementById('f-i-status').value, sellPrice: parseFloat(document.getElementById('f-i-sell').value)||0 };
                 if(id) { delete d.qty; await updateDoc(doc(db,"inventory",id), d); } else { await addDoc(collection(db,"inventory"), {...d, costPrice:0}); }
                 app.closeModal(); app.toast("Stock Updated");
             },
             editInv: async (id) => {
-                // SECURITY CHECK
                 if(app.userRole !== 'admin') { app.toast("Admin Access Required"); return; }
-                
                 const d = (await getDoc(doc(db,"inventory",id))).data();
                 document.getElementById('m-inv-title').innerText = "Edit Stock Details";
                 document.getElementById('f-i-id').value = id; document.getElementById('f-i-date').value = d.dateAdded;
@@ -871,27 +801,14 @@
             saveSale: async () => {
                 const n = document.getElementById('f-s-name').value;
                 const q = parseFloat(document.getElementById('f-s-qty').value)||0;
-                const d = { 
-                    date: document.getElementById('f-s-date').value, 
-                    item: n, qty: q, 
-                    mode: document.getElementById('f-s-mode').value, 
-                    amount: parseFloat(document.getElementById('f-s-amt').value)||0, 
-                    chNo: document.getElementById('f-s-ch-no').value, 
-                    chDate: document.getElementById('f-s-ch-date').value 
-                };
+                const d = { date: document.getElementById('f-s-date').value, item: n, qty: q, mode: document.getElementById('f-s-mode').value, amount: parseFloat(document.getElementById('f-s-amt').value)||0, chNo: document.getElementById('f-s-ch-no').value, chDate: document.getElementById('f-s-ch-date').value };
                 await addDoc(collection(db,"sales"), d);
                 const inv = app.inventory.find(i=>`${i.name} (${i.branch})`===n);
                 if(inv) await updateDoc(doc(db,"inventory",inv.id), {qty: parseFloat(inv.qty)-q});
                 app.closeModal(); app.toast("Transaction Complete");
             },
-            delInv: async (id) => { 
-                if(app.userRole !== 'admin') { app.toast("Admin Access Required"); return; }
-                if(confirm("Permanently delete?")) await deleteDoc(doc(db,"inventory",id)); 
-            },
-            delSale: async (id) => { 
-                if(app.userRole !== 'admin') { app.toast("Admin Access Required"); return; }
-                if(confirm("Void transaction?")) await deleteDoc(doc(db,"sales",id)); 
-            }
+            delInv: async (id) => { if(app.userRole !== 'admin') { app.toast("Admin Access Required"); return; } if(confirm("Permanently delete?")) await deleteDoc(doc(db,"inventory",id)); },
+            delSale: async (id) => { if(app.userRole !== 'admin') { app.toast("Admin Access Required"); return; } if(confirm("Void transaction?")) await deleteDoc(doc(db,"sales",id)); }
         };
     </script>
 </body>
