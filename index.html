@@ -14,7 +14,7 @@
 
     <style>
         :root {
-            --primary: #0056b3; /* Darker blue matching logo */
+            --primary: #0056b3;
             --primary-light: #2563eb;
             --secondary: #475569;
             --bg-page: #f1f5f9;
@@ -58,7 +58,6 @@
             height: 80px; display: flex; align-items: center; padding: 0 24px; 
             border-bottom: 1px solid rgba(255,255,255,0.08); 
         }
-        /* Logo Styles Updated */
         .logo-img { height: 45px; width: auto; object-fit: contain; display: block; }
 
         .nav-menu { padding: 20px 12px; overflow-y: auto; height: calc(100vh - 80px); }
@@ -144,7 +143,6 @@
         <div class="card" style="width:100%; max-width:420px; padding:50px 40px; border:none; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);">
             <div style="text-align:center; margin-bottom:40px;">
                 <div style="display:flex; justify-content:center; margin-bottom:20px;">
-                    <!-- Direct Logo Loading with Error Handling -->
                     <img class="logo-img main-logo-target" style="height:60px;" alt="Master Sub Logo" onerror="app.handleLogoError(this)">
                 </div>
                 <h2 style="font-weight:800; color:var(--text-main); letter-spacing:-0.5px; font-size:2rem;">Welcome</h2>
@@ -168,7 +166,6 @@
         <div class="mobile-overlay" onclick="app.toggleSidebar()"></div>
         <div class="sidebar" id="sidebar">
             <div class="sidebar-brand">
-                <!-- Direct Sidebar Logo -->
                 <img class="logo-img main-logo-target" alt="Master Sub Logo" onerror="app.handleLogoError(this)">
             </div>
             <div class="nav-menu">
@@ -190,7 +187,7 @@
 
             <div class="content-body">
                 
-                <!-- Dashboard Updated with Total Stock and Report Buttons -->
+                <!-- Dashboard -->
                 <div id="v-dash">
                     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:25px;">
                         <div class="card" style="border-left:5px solid #10b981;">
@@ -198,21 +195,11 @@
                                 <div><small class="stat-label" style="text-transform:uppercase; color:var(--text-muted); font-weight:700; font-size:0.75rem;">Total Stock (Active)</small><h2 id="s-tot-act" style="font-size:2.5rem; margin-top:5px; color:#10b981;">0</h2></div>
                                 <div style="background:#ecfdf5; padding:10px; border-radius:10px; color:#10b981;"><i class="fas fa-layer-group fa-lg"></i></div>
                             </div>
-                            <div class="report-actions">
-                                <button class="btn-report" onclick="app.genDashReport('All','daily')">Daily</button>
-                                <button class="btn-report" onclick="app.genDashReport('All','weekly')">Weekly</button>
-                                <button class="btn-report" onclick="app.genDashReport('All','monthly')">Monthly</button>
-                            </div>
                         </div>
                         <div class="card" style="border-left:5px solid var(--primary);">
                             <div style="display:flex; justify-content:space-between; align-items:start;">
                                 <div><small class="stat-label" style="text-transform:uppercase; color:var(--text-muted); font-weight:700; font-size:0.75rem;">Colombo Stock</small><h2 id="s-col-act" style="font-size:2.5rem; margin-top:5px;">0</h2></div>
                                 <div style="background:#eff6ff; padding:10px; border-radius:10px; color:var(--primary);"><i class="fas fa-building fa-lg"></i></div>
-                            </div>
-                            <div class="report-actions">
-                                <button class="btn-report" onclick="app.genDashReport('Colombo','daily')">Daily</button>
-                                <button class="btn-report" onclick="app.genDashReport('Colombo','weekly')">Weekly</button>
-                                <button class="btn-report" onclick="app.genDashReport('Colombo','monthly')">Monthly</button>
                             </div>
                         </div>
                         <div class="card" style="border-left:5px solid #db2777;">
@@ -220,22 +207,15 @@
                                 <div><small class="stat-label" style="text-transform:uppercase; color:var(--text-muted); font-weight:700; font-size:0.75rem;">Negombo Stock</small><h2 id="s-neg-act" style="font-size:2.5rem; margin-top:5px;">0</h2></div>
                                 <div style="background:#fce7f3; padding:10px; border-radius:10px; color:#db2777;"><i class="fas fa-store fa-lg"></i></div>
                             </div>
-                            <div class="report-actions">
-                                <button class="btn-report" onclick="app.genDashReport('Negombo','daily')">Daily</button>
-                                <button class="btn-report" onclick="app.genDashReport('Negombo','weekly')">Weekly</button>
-                                <button class="btn-report" onclick="app.genDashReport('Negombo','monthly')">Monthly</button>
-                            </div>
                         </div>
                         <div class="card" style="border-left:5px solid var(--danger);">
                             <div style="display:flex; justify-content:space-between; align-items:start;">
                                 <div><small class="stat-label" style="text-transform:uppercase; color:var(--text-muted); font-weight:700; font-size:0.75rem;">Total Damages</small><h2 id="s-tot-dmg" style="color:var(--danger); font-size:2.5rem; margin-top:5px;">0</h2></div>
                                 <div style="background:#fee2e2; padding:10px; border-radius:10px; color:var(--danger);"><i class="fas fa-dumpster-fire fa-lg"></i></div>
                             </div>
-                            <div style="margin-top:15px; text-align:center; color:var(--text-muted); font-size:0.8rem;">Damage items excluded from stock</div>
                         </div>
                     </div>
 
-                    <!-- NEW: Bar Charts Section -->
                     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap:25px; margin-top:25px;">
                         <div class="card" style="min-height:350px; display:flex; flex-direction:column;">
                             <h4 style="margin-bottom:15px; color:var(--text-main); font-weight:600;">Current Inventory Levels</h4>
@@ -260,7 +240,6 @@
                             <div class="filter-item"><label>Date Added</label><input type="date" id="inv-date-f" class="form-control" onchange="app.renderInv()"></div>
                             <div class="filter-item"><label>Branch</label><select id="inv-branch-f" class="form-control" onchange="app.renderInv()"><option value="All">All Locations</option><option>Colombo</option><option>Negombo</option></select></div>
                             <button id="btn-add-stock" class="btn btn-primary" onclick="app.openModal('inv')" style="height:44px;"><i class="fas fa-plus"></i> Add Stock</button>
-                            <button class="btn btn-ghost" onclick="app.genStockPDF()" style="height:44px; color:var(--primary); border-color:var(--primary);"><i class="fas fa-file-alt"></i> Stock Report</button>
                         </div>
                         <div class="table-container"><table><thead><tr><th>Date</th><th>Branch</th><th>Item</th><th>Stock</th><th>Retail Price</th><th style="text-align:right;">Edit</th></tr></thead><tbody id="t-inv"></tbody></table></div>
                     </div>
@@ -291,22 +270,60 @@
                     </div>
                 </div>
 
-                <!-- Reports -->
+                <!-- Reports (LOCKED) -->
                 <div id="v-reports" style="display:none;">
-                    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:25px;">
-                        <div class="card">
-                            <h4 style="border-bottom:1px solid var(--border); padding-bottom:15px; margin-bottom:20px; display:flex; align-items:center; gap:10px;"><i class="fas fa-chart-line" style="color:var(--primary);"></i> Sales Reports</h4>
-                            <div style="margin-bottom:20px;"><label>Select Branch</label><select id="rep-branch" class="form-control"><option value="All">All Branches</option><option>Colombo</option><option>Negombo</option></select></div>
-                            <div style="display:grid; gap:12px;">
-                                <button class="btn btn-ghost w-full" onclick="app.genPDF('daily')">Daily Summary Report</button>
-                                <button class="btn btn-ghost w-full" onclick="app.genPDF('weekly')">Weekly Performance Report</button>
-                                <button class="btn btn-ghost w-full" onclick="app.genPDF('monthly')">Monthly Overview Report</button>
+                    
+                    <!-- Reports Lock Screen -->
+                    <div id="reports-lock" class="lock-wrapper">
+                        <div class="lock-icon-bg" style="color:#ef4444; background:#fef2f2;"><i class="fas fa-file-pdf"></i></div>
+                        <h2 style="font-weight:800; margin-bottom:10px;">Reports Restricted</h2>
+                        <p style="color:var(--text-muted); margin-bottom:30px;">This area is protected. Please enter the Reports Access PIN.</p>
+                        <input type="password" id="reports-pin" class="form-control" style="font-size:1.5rem; letter-spacing:15px; text-align:center; max-width:250px; margin:0 auto 25px; height:60px;" maxlength="8" placeholder="••••">
+                        <button class="btn btn-danger w-full" style="max-width:250px; height:50px;" onclick="app.unlockReports()">Unlock Reports</button>
+                    </div>
+
+                    <!-- Reports Content (Hidden by default) -->
+                    <div id="reports-content" style="display:none;">
+                        <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 40px; border-top: 5px solid var(--primary);">
+                            <div style="width: 80px; height: 80px; background: #eff6ff; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; margin-bottom: 25px;">
+                                <i class="fas fa-file-pdf fa-3x" style="color: var(--primary);"></i>
                             </div>
-                        </div>
-                        <div class="card">
-                            <h4 style="border-bottom:1px solid var(--border); padding-bottom:15px; margin-bottom:20px; display:flex; align-items:center; gap:10px;"><i class="fas fa-file-medical-alt" style="color:var(--danger);"></i> Audit Reports</h4>
-                            <div style="margin-bottom:20px;"><label>Select Branch</label><select id="dmg-rep-branch" class="form-control"><option value="All">All Locations</option><option>Colombo</option><option>Negombo</option></select></div>
-                            <button class="btn btn-danger w-full" onclick="app.genDamagePDF()">Download Damage Audit Report</button>
+                            <h2 style="color:var(--text-main); margin-bottom: 10px; font-weight: 800;">Central Reporting Hub</h2>
+                            <p style="color:var(--text-muted); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                                Generate a complete, consolidated PDF report containing <strong style="color:var(--text-main)">Inventory, Sales, Damage, and Profit Analysis</strong> in a single document.
+                            </p>
+                            
+                            <div style="background: #f8fafc; padding: 30px; border-radius: 16px; border: 1px solid var(--border);">
+                                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 30px; text-align: left;">
+                                    <div>
+                                        <label style="font-size: 0.95rem; margin-bottom: 10px;">Select Branch Scope</label>
+                                        <select id="master-rep-branch" class="form-control" style="height: 50px;">
+                                            <option value="All">All Branches (Consolidated)</option>
+                                            <option value="Colombo">Colombo Branch</option>
+                                            <option value="Negombo">Negombo Branch</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label style="font-size: 0.95rem; margin-bottom: 10px;">Select Report Period</label>
+                                        <select id="master-rep-period" class="form-control" style="height: 50px;">
+                                            <option value="weekly">Weekly Report (Last 7 Days)</option>
+                                            <option value="monthly">Monthly Report (Current Month)</option>
+                                            <option value="all">All Time History</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary" style="height: 60px; font-size: 1.1rem; width: 100%; box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.3);" onclick="app.genMasterPDF()">
+                                    <i class="fas fa-download fa-lg"></i> Download Full Master Report
+                                </button>
+                            </div>
+                            
+                            <div style="margin-top: 25px; font-size: 0.85rem; color: var(--text-muted); display: flex; justify-content: center; gap: 20px;">
+                                <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Inventory Status</span>
+                                <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Sales Performance</span>
+                                <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Damage Logs</span>
+                                <span><i class="fas fa-check-circle" style="color: var(--success);"></i> Profit Analysis</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -327,9 +344,7 @@
                             <button class="btn btn-ghost btn-sm" id="tab-security" onclick="app.switchSetTab('security')"><i class="fas fa-shield-alt"></i> Security & Access</button>
                         </div>
                         
-                        <!-- NEW: Split Master Data Section -->
                         <div id="set-master">
-                            <!-- Shared Filters -->
                             <div class="card">
                                 <div class="grid-filters">
                                     <div class="filter-item"><label>Date Added</label><input type="date" id="ex-inv-date-f" class="form-control" onchange="app.renderExecInv()"></div>
@@ -337,8 +352,6 @@
                                     <div class="filter-item" style="flex:2;"><label>Search Database</label><input type="text" id="ex-inv-q" class="form-control" placeholder="Search Master Inventory..." onkeyup="app.renderExecInv()"></div>
                                 </div>
                             </div>
-
-                            <!-- Active Stock Table -->
                             <div class="card" style="border-top: 4px solid var(--success);">
                                 <h4 style="margin-bottom:15px; color:var(--success); display:flex; align-items:center; gap:10px;"><i class="fas fa-box-open"></i> Active Master Inventory</h4>
                                 <div class="table-container">
@@ -348,8 +361,6 @@
                                     </table>
                                 </div>
                             </div>
-
-                            <!-- Damage Stock Table -->
                             <div class="card" style="border-top: 4px solid var(--danger);">
                                 <h4 style="margin-bottom:15px; color:var(--danger); display:flex; align-items:center; gap:10px;"><i class="fas fa-dumpster-fire"></i> Damage Master Inventory</h4>
                                 <div class="table-container">
@@ -363,33 +374,36 @@
                         
                         <div id="set-profit" style="display:none;">
                             <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; margin-bottom:25px;"><div class="card" style="margin:0; text-align:center;"><small style="text-transform:uppercase; color:var(--text-muted); font-weight:700;">Colombo Net Profit</small><h3 id="ep-col" style="color:#2563eb; margin-top:5px;">0</h3></div><div class="card" style="margin:0; text-align:center;"><small style="text-transform:uppercase; color:var(--text-muted); font-weight:700;">Negombo Net Profit</small><h3 id="ep-neg" style="color:#db2777; margin-top:5px;">0</h3></div><div class="card" style="margin:0; text-align:center; background:#10b981; color:white; border:none;"><small style="text-transform:uppercase; opacity:0.9; font-weight:700;">Total Net Profit</small><h3 id="ep-tot" style="margin-top:5px;">0</h3></div></div>
-                            <div class="card" style="border-left: 5px solid var(--primary);">
-                                <h4 style="margin-bottom: 20px; display:flex; align-items:center; gap:10px;"><i class="fas fa-file-invoice-dollar"></i> Generate Profit Reports</h4>
-                                <div class="grid-filters" style="margin-bottom:0;">
-                                    <div class="filter-item">
-                                        <label>Report Period</label>
-                                        <select id="prof-period" class="form-control">
-                                            <option value="daily">Daily Profit Report (Today)</option>
-                                            <option value="weekly">Weekly Profit Report (Last 7 Days)</option>
-                                            <option value="monthly">Monthly Profit Report (This Month)</option>
-                                        </select>
-                                    </div>
-                                    <div class="filter-item">
-                                        <label>Branch Scope</label>
-                                        <select id="prof-branch" class="form-control">
-                                            <option value="All">All Branches (Total)</option>
-                                            <option value="Colombo">Colombo Branch</option>
-                                            <option value="Negombo">Negombo Branch</option>
-                                        </select>
-                                    </div>
-                                    <button class="btn btn-primary" onclick="app.genProfitPDF()" style="height: 44px;">
-                                        Download Professional Report <i class="fas fa-download" style="margin-left:5px;"></i>
-                                    </button>
-                                </div>
-                            </div>
                             <div class="table-container"><table><thead><tr><th>Date</th><th>Item</th><th>Qty</th><th>Unit Cost</th><th>Unit Price</th><th>Net Profit</th></tr></thead><tbody id="t-exec-profit"></tbody></table></div>
                         </div>
-                        <div id="set-security" style="display:none;"><div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:25px;"><div class="card" style="border-top: 4px solid var(--primary);"><h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-user-shield"></i> Master Admin Password</h4><div style="margin-bottom:15px;"><label>New Admin Password</label><input type="password" id="new-admin-pass" class="form-control" placeholder="New Password"></div><button class="btn btn-primary w-full" onclick="app.changeLoginPass('admin')">Update Admin Password</button></div><div class="card" style="border-top: 4px solid var(--success);"><h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-users"></i> Staff Access Password</h4><div style="margin-bottom:15px;"><label>New Staff Password</label><input type="password" id="new-staff-pass" class="form-control" placeholder="New Password"></div><button class="btn btn-success w-full" onclick="app.changeLoginPass('staff')">Update Staff Password</button></div><div class="card" style="border-top: 4px solid #8b5cf6;"><h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-key"></i> Settings Lock PIN</h4><div style="margin-bottom:15px;"><label>New Lock PIN</label><input type="password" id="new-pin" class="form-control" placeholder="Numbers Only (e.g. 1234)"></div><button class="btn btn-ghost w-full" onclick="app.changePin()">Update Lock PIN</button></div></div></div>
+
+                        <!-- Updated Security Tab with Reports PIN -->
+                        <div id="set-security" style="display:none;">
+                            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:25px;">
+                                <div class="card" style="border-top: 4px solid var(--primary);">
+                                    <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-user-shield"></i> Master Admin Password</h4>
+                                    <div style="margin-bottom:15px;"><label>New Admin Password</label><input type="password" id="new-admin-pass" class="form-control" placeholder="New Password"></div>
+                                    <button class="btn btn-primary w-full" onclick="app.changeLoginPass('admin')">Update Admin Password</button>
+                                </div>
+                                <div class="card" style="border-top: 4px solid var(--success);">
+                                    <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-users"></i> Staff Access Password</h4>
+                                    <div style="margin-bottom:15px;"><label>New Staff Password</label><input type="password" id="new-staff-pass" class="form-control" placeholder="New Password"></div>
+                                    <button class="btn btn-success w-full" onclick="app.changeLoginPass('staff')">Update Staff Password</button>
+                                </div>
+                                <div class="card" style="border-top: 4px solid #8b5cf6;">
+                                    <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-key"></i> Settings Lock PIN</h4>
+                                    <div style="margin-bottom:15px;"><label>New Lock PIN</label><input type="password" id="new-pin" class="form-control" placeholder="Numbers Only (e.g. 1234)"></div>
+                                    <button class="btn btn-ghost w-full" onclick="app.changePin()">Update Lock PIN</button>
+                                </div>
+                                <!-- New Card for Report PIN -->
+                                <div class="card" style="border-top: 4px solid #f59e0b;">
+                                    <h4 style="margin-bottom:15px; display:flex; align-items:center; gap:10px;"><i class="fas fa-file-lock"></i> Reports Access PIN</h4>
+                                    <div style="margin-bottom:15px;"><label>New Report PIN</label><input type="password" id="new-rep-pin" class="form-control" placeholder="Numbers Only (e.g. 1234)"></div>
+                                    <button class="btn btn-ghost w-full" style="color:#d97706; border-color:#d97706;" onclick="app.changeRepPin()">Update Report PIN</button>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -422,12 +436,8 @@
             invChart: null, salesChart: null,
             logoBase64: null,
 
-            // Robust Logo Loading System
             initLogo: () => {
-                // 1. Immediately set the source to the file 'Logo.png' for visual display
                 app.setLogoSrc('Logo.png');
-
-                // 2. Background process: Load for PDF conversion (Canvas)
                 const img = new Image();
                 img.src = 'Logo.png'; 
                 img.onload = () => {
@@ -436,50 +446,27 @@
                         cvs.width = img.width; cvs.height = img.height;
                         const ctx = cvs.getContext('2d');
                         ctx.drawImage(img, 0, 0);
-                        // Save Base64 for PDF generation
                         app.logoBase64 = cvs.toDataURL('image/png');
-                    } catch (e) {
-                        console.warn("Local security blocked logo conversion for PDF. Visual logo is fine.");
-                    }
+                    } catch (e) {}
                 };
-                img.onerror = () => {
-                    console.warn("Logo.png file not found. Falling back to generated logo.");
-                    // Fallback logic handled by img onerror in HTML, but we generate base64 fallback for PDF here
-                    app.genFallbackLogo();
-                };
+                img.onerror = () => app.genFallbackLogo();
             },
 
-            // Generates a backup logo if the file is missing
             genFallbackLogo: () => {
                 const cvs = document.createElement('canvas');
                 cvs.width = 400; cvs.height = 100;
                 const ctx = cvs.getContext('2d');
-                
-                // Clear
                 ctx.clearRect(0, 0, 400, 100);
-
-                // Draw Blue Crescent Arc (Left Side)
                 ctx.beginPath();
-                ctx.arc(60, 50, 35, 0.8 * Math.PI, 1.2 * Math.PI, true); // Outer arc
+                ctx.arc(60, 50, 35, 0.8 * Math.PI, 1.2 * Math.PI, true);
                 ctx.lineWidth = 8;
-                ctx.strokeStyle = '#0056b3'; // Dark Blue
+                ctx.strokeStyle = '#0056b3';
                 ctx.stroke();
-                
-                // Text Styling
                 ctx.font = 'bold 48px Inter, sans-serif';
                 ctx.textBaseline = 'middle';
-                
-                // "MASTER" in Dark Blue
-                ctx.fillStyle = '#0056b3';
-                ctx.fillText('MASTER', 90, 52);
-                
-                // "SUB" in Lighter Blue
-                ctx.fillStyle = '#6c757d'; // Slate/Greyish Blue
-                ctx.fillText('SUB', 300, 52);
-
+                ctx.fillStyle = '#0056b3'; ctx.fillText('MASTER', 90, 52);
+                ctx.fillStyle = '#6c757d'; ctx.fillText('SUB', 300, 52);
                 app.logoBase64 = cvs.toDataURL('image/png');
-                
-                // Only replace the visual src if the file actually failed to load (handled by onerror in HTML)
             },
 
             setLogoSrc: (src) => {
@@ -487,8 +474,7 @@
             },
 
             handleLogoError: (imgEl) => {
-                // Called by HTML img tag onerror
-                app.genFallbackLogo(); // Ensure base64 is ready
+                app.genFallbackLogo();
                 if(app.logoBase64) imgEl.src = app.logoBase64;
             },
 
@@ -526,6 +512,9 @@
 
             init: () => {
                 if(!localStorage.getItem('ms_pin')) localStorage.setItem('ms_pin', '1234');
+                // Set default report PIN if not exists
+                if(!localStorage.getItem('ms_rep_pin')) localStorage.setItem('ms_rep_pin', '1234');
+                
                 onSnapshot(collection(db, "inventory"), s => {
                     app.inventory = s.docs.map(d => ({id: d.id, ...d.data()}));
                     app.renderInv(); app.renderDamage(); app.updateStats(); app.updateDatalist();
@@ -534,7 +523,7 @@
                 onSnapshot(collection(db, "sales"), s => {
                     app.sales = s.docs.map(d => ({id: d.id, ...d.data()}));
                     app.renderSales(); 
-                    app.updateStats(); // Update charts on sales change too
+                    app.updateStats(); 
                     if(app.userRole === 'admin') app.renderExecProfit();
                 });
             },
@@ -557,7 +546,15 @@
                     document.getElementById('settings-lock').style.display='block';
                     document.getElementById('settings-content').style.display='none';
                     document.getElementById('settings-pin').value = '';
-                } else { document.getElementById('v-'+v).style.display='block'; }
+                } else if(v === 'reports') {
+                    // Lock reports on entry
+                    document.getElementById('v-reports').style.display='block';
+                    document.getElementById('reports-lock').style.display='block';
+                    document.getElementById('reports-content').style.display='none';
+                    document.getElementById('reports-pin').value = '';
+                } else { 
+                    document.getElementById('v-'+v).style.display='block'; 
+                }
             },
 
             unlockSettings: () => {
@@ -569,9 +566,25 @@
                 } else { app.toast("Incorrect Security PIN"); }
             },
 
+            // New Function: Unlock Reports
+            unlockReports: () => {
+                const pin = document.getElementById('reports-pin').value;
+                if(pin === localStorage.getItem('ms_rep_pin')) {
+                    document.getElementById('reports-lock').style.display='none';
+                    document.getElementById('reports-content').style.display='block';
+                } else { app.toast("Incorrect Report PIN"); }
+            },
+
             changePin: () => {
                 const pin = document.getElementById('new-pin').value;
-                if(pin.length >= 4) { localStorage.setItem('ms_pin', pin); app.toast("PIN Updated!"); document.getElementById('new-pin').value = ''; } 
+                if(pin.length >= 4) { localStorage.setItem('ms_pin', pin); app.toast("Settings PIN Updated!"); document.getElementById('new-pin').value = ''; } 
+                else { app.toast("PIN too short"); }
+            },
+
+            // New Function: Change Report PIN
+            changeRepPin: () => {
+                const pin = document.getElementById('new-rep-pin').value;
+                if(pin.length >= 4) { localStorage.setItem('ms_rep_pin', pin); app.toast("Report PIN Updated!"); document.getElementById('new-rep-pin').value = ''; } 
                 else { app.toast("PIN too short"); }
             },
 
@@ -601,7 +614,6 @@
                 document.getElementById('s-tot-act').innerText = totActive;
                 document.getElementById('s-tot-dmg').innerText = totDamage;
 
-                // Calculate Sales for Charts
                 const colSales = app.sales.filter(s => s.item.includes('Colombo')).reduce((a,v) => a + (parseFloat(v.amount)||0), 0);
                 const negSales = app.sales.filter(s => !s.item.includes('Colombo')).reduce((a,v) => a + (parseFloat(v.amount)||0), 0);
 
@@ -749,173 +761,145 @@
             upExec: async (id, f, v) => { const u={}; u[f] = parseFloat(v) || 0; await updateDoc(doc(db,"inventory",id), u); },
             toggleCheque: (v) => { document.getElementById('cheque-wrap').style.display = (v==='Cheque') ? 'block' : 'none'; },
 
-            genDashReport: async (branch, period) => {
-                const { jsPDF } = window.jspdf; const doc = new jsPDF();
-                app.addLogoToPDF(doc); // Updated Call
-                app.pdfHead(doc, `${period.toUpperCase()} SALES - ${branch}`);
+            // NEW MASTER REPORT GENERATION
+            genMasterPDF: async () => {
+                const branch = document.getElementById('master-rep-branch').value;
+                const period = document.getElementById('master-rep-period').value;
+                const { jsPDF } = window.jspdf; 
+                const doc = new jsPDF();
                 
-                let filtered = app.sales;
+                // Helper for date filtering
                 const now = new Date();
-                
-                if(period === 'daily') filtered = filtered.filter(s => s.date === now.toISOString().split('T')[0]);
-                if(period === 'weekly') { const lastWeek = new Date(); lastWeek.setDate(now.getDate() - 7); filtered = filtered.filter(s => new Date(s.date) >= lastWeek); }
-                if(period === 'monthly') filtered = filtered.filter(s => s.date.startsWith(now.toISOString().slice(0, 7)));
-                if(branch !== 'All') filtered = filtered.filter(s => s.item.includes(branch));
+                const filterDate = (dateStr) => {
+                    if (period === 'all') return true;
+                    const d = new Date(dateStr);
+                    if (period === 'weekly') {
+                        const lastWeek = new Date();
+                        lastWeek.setDate(now.getDate() - 7);
+                        return d >= lastWeek;
+                    }
+                    if (period === 'monthly') {
+                        return dateStr.startsWith(now.toISOString().slice(0, 7));
+                    }
+                    return true;
+                };
 
-                const rows = filtered.map(s => [
-                    s.date, 
-                    s.item, 
-                    s.qty, 
-                    s.mode, 
-                    parseFloat(s.amount).toLocaleString(undefined,{minimumFractionDigits:2})
-                ]);
+                // --- HEADER ---
+                app.addLogoToPDF(doc);
+                app.pdfHead(doc, `MASTER BUSINESS REPORT (${period.toUpperCase()})`);
                 
-                const totalQty = filtered.reduce((sum, item) => sum + (parseFloat(item.qty) || 0), 0);
-                const totalAmount = filtered.reduce((sum, item) => sum + (parseFloat(item.amount) || 0), 0);
+                doc.setFontSize(11); doc.setTextColor(100);
+                doc.text(`Branch Scope: ${branch}`, 14, 60);
+                doc.text(`Generated By: ${app.userRole === 'admin' ? 'Administrator' : 'Staff'}`, 14, 65);
 
-                doc.autoTable({ 
-                    startY: 55, 
-                    head: [['Date', 'Item', 'Qty', 'Mode', 'Amount (LKR)']], 
-                    body: rows,
-                    headStyles: { fillColor: [37, 99, 235], halign: 'center' },
-                    bodyStyles: { halign: 'center' },
-                    columnStyles: { 
-                        2: { halign: 'right' }, 
-                        4: { halign: 'right' } 
-                    },
-                    foot: [['Total', '', totalQty, '', totalAmount.toLocaleString(undefined, {minimumFractionDigits:2})]],
-                    footStyles: { fillColor: [241, 245, 249], textColor: [37, 99, 235], fontStyle: 'bold', halign: 'right' }
+                // --- 1. INVENTORY SECTION ---
+                let invData = app.inventory.filter(i => i.status === 'Active');
+                if(branch !== 'All') invData = invData.filter(i => i.branch === branch);
+                invData.sort((a,b) => a.name.localeCompare(b.name));
+
+                let startY = 75;
+                doc.setFontSize(14); doc.setTextColor(0, 86, 179); doc.setFont("helvetica", "bold");
+                doc.text("1. CURRENT INVENTORY STATUS", 14, startY);
+                
+                const invRows = invData.map(i => {
+                    const total = (parseFloat(i.qty)||0) * (parseFloat(i.sellPrice)||0);
+                    return [i.name, i.branch, i.qty, parseFloat(i.sellPrice).toLocaleString(), total.toLocaleString(undefined,{minimumFractionDigits:2})];
                 });
-                app.pdfFoot(doc);
-                doc.save(`Sales_Report_${branch}_${period}.pdf`);
-            },
+                
+                const totalStockVal = invData.reduce((acc, i) => acc + ((parseFloat(i.qty)||0) * (parseFloat(i.sellPrice)||0)), 0);
 
-            genProfitPDF: async () => {
-                const period = document.getElementById('prof-period').value;
-                const branch = document.getElementById('prof-branch').value;
-                const { jsPDF } = window.jspdf; const doc = new jsPDF();
-                app.addLogoToPDF(doc); // Updated Call
-                app.pdfHead(doc, `${period.toUpperCase()} PROFIT REPORT - ${branch}`);
+                doc.autoTable({
+                    startY: startY + 5,
+                    head: [['Item Name', 'Branch', 'Qty', 'Unit Price', 'Total Value']],
+                    body: invRows,
+                    theme: 'striped',
+                    headStyles: { fillColor: [0, 86, 179] }, 
+                    columnStyles: { 2: {halign:'center'}, 3: {halign:'right'}, 4: {halign:'right'} },
+                    foot: [['TOTAL STOCK ASSETS', '', '', '', totalStockVal.toLocaleString(undefined,{minimumFractionDigits:2})]],
+                    footStyles: { fillColor: [240, 248, 255], textColor: [0, 86, 179], fontStyle: 'bold', halign: 'right' }
+                });
 
-                let filtered = app.sales;
-                const now = new Date();
+                // --- 2. SALES SECTION ---
+                let finalY = doc.lastAutoTable.finalY + 15;
+                if (finalY > 250) { doc.addPage(); finalY = 20; }
+                
+                doc.setFontSize(14); doc.setTextColor(0, 86, 179);
+                doc.text("2. SALES PERFORMANCE", 14, finalY);
 
-                if(period === 'daily') filtered = filtered.filter(s => s.date === now.toISOString().split('T')[0]);
-                if(period === 'weekly') { const lastWeek = new Date(); lastWeek.setDate(now.getDate() - 7); filtered = filtered.filter(s => new Date(s.date) >= lastWeek); }
-                if(period === 'monthly') filtered = filtered.filter(s => s.date.startsWith(now.toISOString().slice(0, 7)));
-                if(branch !== 'All') filtered = filtered.filter(s => s.item.includes(branch));
+                let salesData = app.sales.filter(s => filterDate(s.date));
+                if(branch !== 'All') salesData = salesData.filter(s => s.item.includes(branch));
+                
+                const salesRows = salesData.map(s => [s.date, s.item, s.qty, s.mode, parseFloat(s.amount).toLocaleString(undefined,{minimumFractionDigits:2})]);
+                const totalSales = salesData.reduce((acc, s) => acc + (parseFloat(s.amount)||0), 0);
 
-                let totQty = 0, totCost = 0, totSales = 0, totProfit = 0;
+                doc.autoTable({
+                    startY: finalY + 5,
+                    head: [['Date', 'Item Sold', 'Qty', 'Payment', 'Revenue']],
+                    body: salesRows,
+                    theme: 'striped',
+                    headStyles: { fillColor: [16, 185, 129] }, 
+                    columnStyles: { 2: {halign:'center'}, 4: {halign:'right'} },
+                    foot: [['TOTAL REVENUE', '', '', '', totalSales.toLocaleString(undefined,{minimumFractionDigits:2})]],
+                    footStyles: { fillColor: [236, 253, 245], textColor: [16, 185, 129], fontStyle: 'bold', halign: 'right' }
+                });
 
-                const rows = filtered.map(s => {
-                    const inv = app.inventory.find(i => `${i.name} (${i.branch})` === s.item);
-                    const unitCost = inv ? (parseFloat(inv.costPrice) || 0) : 0;
-                    const qty = parseFloat(s.qty) || 0;
-                    const totalSale = parseFloat(s.amount) || 0;
-                    const totalCost = unitCost * qty;
-                    const profit = totalSale - totalCost;
+                // --- 3. DAMAGE SECTION ---
+                finalY = doc.lastAutoTable.finalY + 15;
+                if (finalY > 250) { doc.addPage(); finalY = 20; }
 
-                    totQty += qty;
-                    totCost += totalCost;
-                    totSales += totalSale;
+                doc.setFontSize(14); doc.setTextColor(220, 38, 38);
+                doc.text("3. DAMAGE & LOSS REPORT", 14, finalY);
+
+                let dmgData = app.inventory.filter(i => i.status === 'Damage');
+                if(branch !== 'All') dmgData = dmgData.filter(i => i.branch === branch);
+                dmgData = dmgData.filter(i => filterDate(i.dateAdded));
+
+                const dmgRows = dmgData.map(i => [i.dateAdded, i.name, i.branch, i.qty]);
+                
+                doc.autoTable({
+                    startY: finalY + 5,
+                    head: [['Reported Date', 'Item', 'Branch', 'Qty Lost']],
+                    body: dmgRows,
+                    theme: 'striped',
+                    headStyles: { fillColor: [220, 38, 38] }, 
+                    columnStyles: { 3: {halign:'center'} }
+                });
+
+                // --- 4. PROFIT SECTION ---
+                finalY = doc.lastAutoTable.finalY + 15;
+                if (finalY > 250) { doc.addPage(); finalY = 20; }
+
+                doc.setFontSize(14); doc.setTextColor(124, 58, 237);
+                doc.text("4. PROFITABILITY ANALYSIS", 14, finalY);
+
+                let totProfit = 0;
+                const profitRows = salesData.map(s => {
+                    const invItem = app.inventory.find(i => `${i.name} (${i.branch})` === s.item);
+                    const cost = invItem ? (parseFloat(invItem.costPrice)||0) : 0;
+                    const revenue = parseFloat(s.amount)||0;
+                    const qty = parseFloat(s.qty)||0;
+                    const totalCost = cost * qty;
+                    const profit = revenue - totalCost;
                     totProfit += profit;
-
-                    return [
-                        s.date, 
-                        s.item, 
-                        qty, 
-                        totalCost.toLocaleString(undefined, {minimumFractionDigits:2}), 
-                        totalSale.toLocaleString(undefined, {minimumFractionDigits:2}), 
-                        profit.toLocaleString(undefined, {minimumFractionDigits:2})
-                    ];
+                    return [s.date, s.item, revenue.toLocaleString(), totalCost.toLocaleString(), profit.toLocaleString()];
                 });
 
                 doc.autoTable({
-                    startY: 55, 
-                    head: [['Date', 'Item', 'Qty', 'Cost', 'Sales', 'Profit']], 
-                    body: rows,
-                    headStyles: { fillColor: [16, 185, 129], halign: 'center' },
-                    columnStyles: { 
-                        2: { halign: 'right' }, 
-                        3: { halign: 'right' }, 
-                        4: { halign: 'right' }, 
-                        5: { halign: 'right', fontStyle: 'bold' } 
-                    },
-                    foot: [['Total', '', totQty, totCost.toLocaleString(undefined, {minimumFractionDigits:2}), totSales.toLocaleString(undefined, {minimumFractionDigits:2}), totProfit.toLocaleString(undefined, {minimumFractionDigits:2})]],
-                    footStyles: { fillColor: [236, 253, 245], textColor: [5, 150, 105], fontStyle: 'bold', halign: 'right' }
+                    startY: finalY + 5,
+                    head: [['Date', 'Transaction', 'Revenue', 'Cost of Goods', 'Net Profit']],
+                    body: profitRows,
+                    theme: 'striped',
+                    headStyles: { fillColor: [124, 58, 237] }, 
+                    columnStyles: { 2: {halign:'right'}, 3: {halign:'right'}, 4: {halign:'right', fontStyle:'bold'} },
+                    foot: [['TOTAL NET PROFIT', '', '', '', totProfit.toLocaleString(undefined,{minimumFractionDigits:2})]],
+                    footStyles: { fillColor: [243, 232, 255], textColor: [124, 58, 237], fontStyle: 'bold', halign: 'right' }
                 });
 
                 app.pdfFoot(doc);
-                doc.save(`Profit_Report_${branch}_${period}.pdf`);
+                doc.save(`Master_Report_${branch}_${period}.pdf`);
             },
-
-            genDamagePDF: async () => {
-                const { jsPDF } = window.jspdf; const doc = new jsPDF();
-                app.addLogoToPDF(doc); // Updated Call
-                const b = document.getElementById('dmg-rep-branch').value;
-                app.pdfHead(doc, `DAMAGE REPORT - ${b}`);
-                
-                let f = app.inventory.filter(i=>i.status==='Damage');
-                if(b!=='All') f = f.filter(i=>i.branch===b);
-                
-                const rows = f.map(i=>[i.dateAdded, i.name, i.branch, i.qty]);
-                const totalQty = f.reduce((sum, item) => sum + (parseFloat(item.qty) || 0), 0);
-
-                doc.autoTable({ 
-                    startY: 55, 
-                    head: [['Date', 'Item', 'Branch', 'Qty']], 
-                    body: rows, 
-                    headStyles:{fillColor:[220,38,38], halign: 'center'},
-                    columnStyles: { 3: { halign: 'right' } },
-                    foot: [['Total', '', '', totalQty]],
-                    footStyles: { fillColor: [254, 242, 242], textColor: [220, 38, 38], fontStyle: 'bold', halign: 'right' }
-                });
-                app.pdfFoot(doc);
-                doc.save(`Damage_Report_${b}.pdf`);
-            },
-
-            genStockPDF: async () => {
-                const { jsPDF } = window.jspdf; const doc = new jsPDF();
-                app.addLogoToPDF(doc); // Updated Call
-                app.pdfHead(doc, "CURRENT STOCK INVENTORY");
-
-                const f = app.inventory.filter(i => i.status === 'Active');
-                const rows = f.map(i => {
-                    const val = (parseFloat(i.qty)||0) * (parseFloat(i.sellPrice)||0);
-                    return [
-                        i.dateAdded, 
-                        i.branch, 
-                        i.name, 
-                        i.qty, 
-                        parseFloat(i.sellPrice).toLocaleString(), 
-                        val.toLocaleString(undefined, {minimumFractionDigits:2})
-                    ];
-                });
-                
-                const totalQty = f.reduce((sum, item) => sum + (parseFloat(item.qty) || 0), 0);
-                const totalValue = f.reduce((sum, item) => sum + ((parseFloat(item.qty)||0) * (parseFloat(item.sellPrice)||0)), 0);
-
-                doc.autoTable({
-                    startY: 55, 
-                    head: [['Date', 'Branch', 'Item', 'Qty', 'Price', 'Value']], 
-                    body: rows,
-                    headStyles: { fillColor: [16, 185, 129], halign: 'center' },
-                    columnStyles: { 
-                        3: { halign: 'right' }, 
-                        4: { halign: 'right' }, 
-                        5: { halign: 'right' } 
-                    },
-                    foot: [['Total', '', '', totalQty, '', totalValue.toLocaleString(undefined, {minimumFractionDigits:2})]],
-                    footStyles: { fillColor: [236, 253, 245], textColor: [5, 150, 105], fontStyle: 'bold', halign: 'right' }
-                });
-                app.pdfFoot(doc);
-                doc.save("Inventory_Stock_Report.pdf");
-            },
-
-            genPDF: (type) => { app.genDashReport('All', type); },
 
             addLogoToPDF: (doc) => {
-                // Now uses the pre-loaded reliable Base64 string
                 if (app.logoBase64) {
                     try {
                         doc.addImage(app.logoBase64, 'PNG', 14, 10, 60, 16);
@@ -945,7 +929,7 @@
             
             downloadInvoice: async () => {
                 const { jsPDF } = window.jspdf; const doc = new jsPDF();
-                app.addLogoToPDF(doc); // Updated Call
+                app.addLogoToPDF(doc); 
                 
                 const primaryColor = [37, 99, 235];
                 doc.setFontSize(20); doc.setTextColor(...primaryColor); doc.setFont("helvetica", "bold");
@@ -1042,7 +1026,6 @@
             delSale: async (id) => { if(app.userRole !== 'admin') { app.toast("Admin Access Required"); return; } if(confirm("Void transaction?")) await deleteDoc(doc(db,"sales",id)); }
         };
 
-        // Initialize logo on load
         window.onload = () => {
             app.initLogo();
         };
